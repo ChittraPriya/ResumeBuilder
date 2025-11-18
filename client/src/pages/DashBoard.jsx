@@ -178,7 +178,7 @@ const DashBoard = () => {
         }
 
         {showUploadResume && (
-          <form onSubmit={uploadResume} onClick={()=> setShowUpdateResume(false)} className='fixed inset-0 bg-black/70 backdrop-blur bg-opacity-50 z-10 flex items-center justify-center'>
+          <form onSubmit={uploadResume} onClick={()=> setShowUploadResume(false)} className='fixed inset-0 bg-black/70 backdrop-blur bg-opacity-50 z-10 flex items-center justify-center'>
             <div onClick={e=> e.stopPropagation()} className='relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6'>
               <h2 className='text-xl font-bold mb-4'>Upload Resume</h2>
               <input onChange={(e)=>setTitle(e.target.value)} value={title} type="text" placeholder='Enter Resume Title' className='w-full px-4 py-2 mb-4 focus:borser-pink-600 ring-pink-600 required:' />
@@ -191,7 +191,7 @@ const DashBoard = () => {
                     ) : (
                       <>
                       <UploadCloud className='size-14 stroke-1' />
-                      
+                      Upload Resume
                       </>
                     )}
                   </div>
