@@ -191,7 +191,7 @@ const DashBoard = () => {
                     ) : (
                       <>
                       <UploadCloud className='size-14 stroke-1' />
-                      <p>Upload Resume</p>
+                      
                       </>
                     )}
                   </div>
