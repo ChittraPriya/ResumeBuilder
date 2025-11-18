@@ -13,12 +13,12 @@ Integrated with **Gemini AI** for professional summaries and **ImageKit** for im
 
 ## 🗄️Dashboard
 
--- 📝Create and Build Resumes easily
--- 🖥️Clean,User-friendly dashboard
--- 💾Save and Share Resume data
--- 🔄Edit and Update anytime
--- 📥Download as PDF
--- 📂Manage Multiple Resumes
+- 📝Create and Build Resumes easily
+- 🖥️Clean,User-friendly dashboard
+- 💾Save and Share Resume data
+- 🔄Edit and Update anytime
+- 📥Download as PDF
+- 📂Manage Multiple Resumes
 
 ## 🎨Resume Editor
 
@@ -54,6 +54,7 @@ Frontend (client)
 - React Router
 - Axios
 - Tailwindcss
+  
 Backend(server)
 - Node.js
 - Express.js
