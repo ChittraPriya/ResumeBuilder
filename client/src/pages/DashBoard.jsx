@@ -201,7 +201,7 @@ const DashBoard = () => {
               <button disabled={isLoading} className='w-full py-2 bg-pink-600 text-white flex items-center justify-center gap-2 rounded hover:bg-pink-700 transition-colors'>
                 {isLoading && <LoaderCircleIcon className='animate-spin size-4 text-white' />}
                 {isLoading ? 'Uploading...' : 'Upload Resume'}
-                Upload Resume</button>
+                </button>
               <XIcon className='absolute top-4 right-4 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors' onClick={()=> {setShowUploadResume(false); setTitle('') }} />
             </div>
           </form>
