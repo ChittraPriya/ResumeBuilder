@@ -1,5 +1,6 @@
 import { BriefcaseIcon, Loader, Plus, Sparkles, Trash2 } from 'lucide-react'
 import React from 'react'
+import {useSelector } from 'react-redux';
 
 const ExperienceForm = ({data, onChange}) => {
 
