@@ -107,15 +107,18 @@ const ResumeBuilder = () => {
       const formData = new FormData();
       formData.append('resumeId', resumeId)
       formData.append('resumeData', JSON.stringify(updatedResumeData))
-      removeBackground && formData.append('removeBackground', 'yes');
-      typeof resumeData.personal_info.image === 'object' && formData.append('image', resumeData.personal_info.image)
-
+      if(removeBackground){
+         formData.append('removeBackground', 'yes');
+      }
+      if(typeof resumeData.personal_info.image === 'object'){
+       formData.append('image', resumeData.personal_info.image)
+      }
       const {data}  = await api.put('/api/resumes/update', formData, {headers: {Authorization: token}})
 
       setResumeData(data.resume)
       toast.success(data.message)
     } catch (error) {
-      console.log('Error Saving resume:' ,error)
+      console.log('Error Saving resume:' ,error.response?.data || error.message)
     }
   }
 
@@ -134,7 +137,7 @@ const ResumeBuilder = () => {
             <div className='bg-white rounded-lg shadow-sm border border-gray-200 p-6 pt-1'>
                {/* progress bar using activeSectionIndex */}
                <hr className='absolute top-0 left-0 right-0 border-2 border-gray-200' />
-               <hr className='absolute top-0 left-0 h-1 bg-gradient-to-r from-pink-500 to-gpink-600 border-none trandition-all duration-2000' style={{width: `${activeSectionIndex * 100 / (sections.length - 1)}%`}} />
+               <hr className='absolute top-0 left-0 h-1 bg-gradient-to-r from-pink-500 to-pink-600 border-none transition-all duration-2000' style={{width: `${activeSectionIndex * 100 / (sections.length - 1)}%`}} />
 
                {/* Section navigation */}
                <div className='flex justify-between items-center mb-6 border-b border-gray-300 py-1'>
@@ -148,7 +151,7 @@ const ResumeBuilder = () => {
                       <ChevronLeft className="size-4" />Previous
                     </button>
                   )}
-                  <button onClick={()=> setActiveSectionIndex((prevIndex)=> Math.min(prevIndex + 1, sections.length - 1))} className={`flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-all ${activeSectionIndex ===  sections.length - 1 && 'opacity-50'}`} disabled= {activeSectionIndex === sections.Length - 1}>
+                  <button onClick={()=> setActiveSectionIndex((prevIndex)=> Math.min(prevIndex + 1, sections.length - 1))} className={`flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-all ${activeSectionIndex ===  sections.length - 1 && 'opacity-50'}`} disabled= {activeSectionIndex === sections.length - 1}>
                      Next <ChevronRight className="size-4" />
                     </button>
                 </div>

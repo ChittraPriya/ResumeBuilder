@@ -1,6 +1,7 @@
 import { BriefcaseIcon, Loader, Plus, Sparkles, Trash2 } from 'lucide-react'
-import React from 'react'
+import React, {useState} from 'react'
 import {useSelector } from 'react-redux';
+import api from '../config/api'
 
 const ExperienceForm = ({data, onChange}) => {
 
@@ -37,7 +38,7 @@ const ExperienceForm = ({data, onChange}) => {
                 const {data} = await api.post('api/ai/enhance-job-desc', {userContent: prompt}, {headers: {Authorization: token}})
                 updateExperience(index, "description", data.enhancedContent)
             } catch (error) {
-                TableRowsSplit.error(error.messsage)
+                console.error(error.message)
             }finally{
                 setGeneratingIndex(-1)
             }
@@ -47,7 +48,7 @@ const ExperienceForm = ({data, onChange}) => {
     <div className='space-y-6'>
              <div className='flex items-center justify-between'>
             <div>
-                <h3 className='flex items-center gao-2 text-lg font-semibold text-gray-900'>Professional Experience</h3>
+                <h3 className='flex items-center gap-2 text-lg font-semibold text-gray-900'>Professional Experience</h3>
                 <p className='text-sm text-gray-500'>Add your Job Experience</p>
             </div>
             <button onClick={addExperience} className='flex items-center gap-2 px-3 py-1 text-sm bg-pink-100 text-pink-700 rounded hover:bg-pink-200 transition-colors'>
@@ -74,7 +75,7 @@ const ExperienceForm = ({data, onChange}) => {
                         <div className='grid md:grid-cols-2 gap-3'>
                             <input value={experience.company || ""} onChange={(e)=> updateExperience(index, "company", e.target.value)} type="text" placeholder='Company Name' className='px-3 py-2 text-sm rounded-lg text-gray-400'/>
                             <input value={experience.position || ""} onChange={(e)=> updateExperience(index, "position", e.target.value)} type="text" placeholder='Position Title' className='px-3 py-2 text-sm rounded-lg text-gray-400'/>
-                            <input value={experience.start_date || ""} onChange={(e)=> updateExperience(index, "start_date", e.target.value)} type="month" className='px-3 py-2 text-sm rounded-lgctext-gray-400'/>
+                            <input value={experience.start_date || ""} onChange={(e)=> updateExperience(index, "start_date", e.target.value)} type="month" className='px-3 py-2 text-sm rounded-lg text-gray-400'/>
                             <input value={experience.end_date || ""} onChange={(e)=> updateExperience(index, "end_date", e.target.value)} type="month" disabled={experience.is_current} className='px-3 py-2 text-sm rounded-lg text-gray-400 disabled:bg-gray-100'/>
                         </div>
                         <label className='flex items-center gap-2'>

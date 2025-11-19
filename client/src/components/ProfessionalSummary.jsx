@@ -1,6 +1,8 @@
 import { Loader2, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import toast from 'react-hot-toast'
+import api from '../config/api'
 
 const ProfessionalSummary = ({data, onChange, setResumeData}) => {
 

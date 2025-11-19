@@ -59,7 +59,8 @@ export const loginUser = async (req, res) => {
         }
 
         //check if password is correct
-        if(!user.comparePassword(password)){
+        const isMatch = await user.comparePassword(password)
+        if(!isMatch){
             return res.status(400).json({message: 'Invalid email or password'})
         }
 
@@ -82,7 +83,7 @@ export const getUserById = async (req, res) => {
         const userId = req.userId;
 
         //check if user exists
-        const user = await User.findOne({userId})
+        const user = await User.findById(userId).select('-password')
         if(!user){
             return res.status(404).json({message: 'User Not Found'})
         }
